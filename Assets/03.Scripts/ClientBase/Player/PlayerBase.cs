@@ -15,6 +15,7 @@ public class PlayerBase : MonoBehaviour
 
     public Action<PlayerInfo> OnMove = null;
     public Action<PlayerInfo> OutMove = null;
+    public Action<PlayerInfo> OnMoveMouse = null;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class PlayerBase : MonoBehaviour
 
         OnMove += m_PMOVE.StartMove;
         OutMove += m_PMOVE.EndMove;
+        OnMoveMouse += m_PMOVE.StartTurn;
 
         Init();
     }
@@ -54,6 +56,11 @@ public class PlayerBase : MonoBehaviour
                 case Message.CANCEL:
                     {
                         OutMove?.Invoke(m_PInfo);
+                        break;
+                    }
+                case Message.PLAYER_TURN:
+                    {
+                        OnMoveMouse?.Invoke(m_PInfo);
                         break;
                     }
             }

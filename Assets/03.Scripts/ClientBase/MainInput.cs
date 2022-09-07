@@ -66,5 +66,18 @@ public class MainInput : MonoBehaviour
         {
             m_MyCharacter.AddMessage(Message.CANCEL);
         }
+
+        RaycastHit hit;
+        Ray ray = Define.MainCam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("GROUND")))
+        {
+            m_MyCharacter.PLAYER_INFO.Rotation(Quaternion.Slerp
+                (
+                    m_MyCharacter.transform.rotation,
+                    Quaternion.LookRotation((hit.point - m_MyCharacter.transform.position).normalized),
+                    0.2f).eulerAngles
+                );
+            m_MyCharacter.AddMessage(Message.PLAYER_TURN);
+        }
     }
 }

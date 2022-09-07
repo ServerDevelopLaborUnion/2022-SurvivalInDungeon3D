@@ -52,6 +52,6 @@ public class PlayerInfo
 
     public void Rotation(Vector3 rot)
     {
-        eulerRotation = rot;
+        eulerRotation.y = rot.y;
     }
 }

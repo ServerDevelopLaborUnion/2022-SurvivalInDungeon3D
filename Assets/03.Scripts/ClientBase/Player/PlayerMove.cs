@@ -7,7 +7,9 @@ public class PlayerMove : MonoBehaviour
     private PlayerInfo pInfo;
     [SerializeField]
     private bool m_IsMove = false;
+    private bool m_IsRotate = false;
     private Vector3 m_dir = Vector3.zero;
+    private Vector3 m_MouseDir = Vector3.zero;
     private CharacterController m_CharacterController;
     private void Awake()
     {
@@ -19,11 +21,21 @@ public class PlayerMove : MonoBehaviour
         pInfo.Move(transform.position);
     }
 
+    public void Rotate()
+    {
+        transform.eulerAngles = pInfo.EulerRotation;
+        pInfo.Rotation(transform.eulerAngles);
+    }
+
     private void Update()
     {
         if (m_IsMove)
         {
             Translate();
+        }
+        if (m_IsRotate)
+        {
+            Rotate();
         }
     }
 
@@ -38,5 +50,18 @@ public class PlayerMove : MonoBehaviour
     {
         m_dir = info.InputDir;
         m_IsMove = false;
+    }
+
+    public void StartTurn(PlayerInfo info)
+    {
+        pInfo = info;
+        m_MouseDir = info.InputDir;
+        m_IsRotate = true;
+    }
+
+    public void EndTurn(PlayerInfo info)
+    {
+        m_MouseDir = info.InputDir;
+        m_IsRotate = false;
     }
 }
