@@ -48,19 +48,19 @@ public static class Define
 
     private static Camera _uiCam;
 
-    public static Transform FadeParent
+    public static FadeParent FadeParent
     {
         get
         {
             if (_fadeParent == null)
             {
-                _fadeParent = GameObject.Find("FadeParent").transform;
+                _fadeParent = GameObject.FindObjectOfType<FadeParent>();
             }
             return _fadeParent;
         }
     }
 
-    private static Transform _fadeParent;
+    private static FadeParent _fadeParent;
 
 
 
