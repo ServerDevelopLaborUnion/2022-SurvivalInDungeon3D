@@ -2,6 +2,6 @@ public enum Message
 {
     NONE,
     CANCEL,
-    PLAYER_MOVE,
-    PLAYER_TURN
+    UNIT_MOVE,
+    UNIT_TURN
 }

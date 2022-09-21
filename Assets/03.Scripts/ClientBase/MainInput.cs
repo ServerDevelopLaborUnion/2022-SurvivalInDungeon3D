@@ -21,45 +21,45 @@ public class MainInput : MonoBehaviour
         if (Input.GetKeyDown(m_MForKey))
         {
             m_MyCharacter.PLAYER_INFO.SetDir(Vector3.forward);
-            m_MyCharacter.AddMessage(Message.PLAYER_MOVE);
+            m_MyCharacter.AddMessage(Message.UNIT_MOVE);
         }
         if (Input.GetKeyUp(m_MForKey))
         {
             m_MyCharacter.PLAYER_INFO.SetDir(-Vector3.forward);
-            m_MyCharacter.AddMessage(Message.PLAYER_MOVE);
+            m_MyCharacter.AddMessage(Message.UNIT_MOVE);
         }
 
         if (Input.GetKeyDown(m_MBackKey))
         {
             m_MyCharacter.PLAYER_INFO.SetDir(Vector3.back);
-            m_MyCharacter.AddMessage(Message.PLAYER_MOVE);
+            m_MyCharacter.AddMessage(Message.UNIT_MOVE);
         }
         if (Input.GetKeyUp(m_MBackKey))
         {
             m_MyCharacter.PLAYER_INFO.SetDir(-Vector3.back);
-            m_MyCharacter.AddMessage(Message.PLAYER_MOVE);
+            m_MyCharacter.AddMessage(Message.UNIT_MOVE);
         }
 
         if (Input.GetKeyDown(m_MLeftKey))
         {
             m_MyCharacter.PLAYER_INFO.SetDir(Vector3.left);
-            m_MyCharacter.AddMessage(Message.PLAYER_MOVE);
+            m_MyCharacter.AddMessage(Message.UNIT_MOVE);
         }
         if (Input.GetKeyUp(m_MLeftKey))
         {
             m_MyCharacter.PLAYER_INFO.SetDir(-Vector3.left);
-            m_MyCharacter.AddMessage(Message.PLAYER_MOVE);
+            m_MyCharacter.AddMessage(Message.UNIT_MOVE);
         }
 
         if (Input.GetKeyDown(m_MRightKey))
         {
             m_MyCharacter.PLAYER_INFO.SetDir(Vector3.right);
-            m_MyCharacter.AddMessage(Message.PLAYER_MOVE);
+            m_MyCharacter.AddMessage(Message.UNIT_MOVE);
         }
         if (Input.GetKeyUp(m_MRightKey))
         {
             m_MyCharacter.PLAYER_INFO.SetDir(-Vector3.right);
-            m_MyCharacter.AddMessage(Message.PLAYER_MOVE);
+            m_MyCharacter.AddMessage(Message.UNIT_MOVE);
         }
 
         if (!Input.anyKey)
@@ -77,7 +77,7 @@ public class MainInput : MonoBehaviour
                     Quaternion.LookRotation((hit.point - m_MyCharacter.transform.position).normalized),
                     0.2f).eulerAngles
                 );
-            m_MyCharacter.AddMessage(Message.PLAYER_TURN);
+            m_MyCharacter.AddMessage(Message.UNIT_TURN);
         }
     }
 }

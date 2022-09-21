@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private PlayerInfo pInfo;
+    private UnitInfo pInfo;
     [SerializeField]
     private bool m_IsMove = false;
     private bool m_IsRotate = false;
@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
 
     public void Rotate()
     {
-        transform.eulerAngles = pInfo.EulerRotation;
+        transform.eulerAngles = pInfo.EulerRotation.ToVector3();
         pInfo.Rotation(transform.eulerAngles);
     }
 
@@ -39,27 +39,27 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public void StartMove(PlayerInfo info)
+    public void StartMove(UnitInfo info)
     {
         pInfo = info;
         m_dir = info.InputDir;
         m_IsMove = true;
     }
 
-    public void EndMove(PlayerInfo info)
+    public void EndMove(UnitInfo info)
     {
         m_dir = info.InputDir;
         m_IsMove = false;
     }
 
-    public void StartTurn(PlayerInfo info)
+    public void StartTurn(UnitInfo info)
     {
         pInfo = info;
         m_MouseDir = info.InputDir;
         m_IsRotate = true;
     }
 
-    public void EndTurn(PlayerInfo info)
+    public void EndTurn(UnitInfo info)
     {
         m_MouseDir = info.InputDir;
         m_IsRotate = false;
