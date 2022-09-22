@@ -36,7 +36,7 @@ public class UnitBase : MonoBehaviour
 
     private void Start()
     {
-        Connection.Send(m_PInfo);
+        //Connection.Send(m_PInfo);
     }
 
     private void Update()

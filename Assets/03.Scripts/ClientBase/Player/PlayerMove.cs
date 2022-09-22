@@ -29,6 +29,12 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (!IsGround())
+        {
+            Debug.Log(1);
+            m_dir += Vector3.down;
+            Translate();
+        }
         if (m_IsMove)
         {
             Translate();
@@ -64,4 +70,14 @@ public class PlayerMove : MonoBehaviour
         m_MouseDir = info.InputDir;
         m_IsRotate = false;
     }
+    public bool IsGround()
+    {
+        Vector3 pos2 = transform.position + m_CharacterController.center;
+        float value = m_CharacterController.height * 0.5f - m_CharacterController.radius;
+
+        pos2.y -= value + m_CharacterController.skinWidth + 0.001f;
+
+        return Physics.CheckSphere(pos2, m_CharacterController.radius, LayerMask.GetMask("GROUND"));
+    }
+
 }
