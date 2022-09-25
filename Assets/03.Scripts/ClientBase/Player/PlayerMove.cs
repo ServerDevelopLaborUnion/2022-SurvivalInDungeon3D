@@ -29,12 +29,12 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        // if (!IsGround())
-        // {
-        //     Debug.Log(1);
-        //     m_dir += Vector3.down;
-        //     Translate();
-        // }
+        if (!IsGround())
+        {
+            Debug.Log(1);
+            m_dir += Vector3.down;
+            Translate();
+        }
         if (m_IsMove)
         {
             Translate();
