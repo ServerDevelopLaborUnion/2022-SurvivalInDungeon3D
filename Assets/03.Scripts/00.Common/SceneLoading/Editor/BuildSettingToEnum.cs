@@ -20,9 +20,14 @@ public class BuildSettingToEnum
 
         for (int i = 0; i < EditorBuildSettings.scenes.Length; ++i)
         {
-            Debug.Log(EditorBuildSettings.scenes[i].guid);
+            int firstIndex = EditorBuildSettings.scenes[i].path.LastIndexOf('/') + 1;
+            int secondIndex = EditorBuildSettings.scenes[i].path.LastIndexOf('.');
+
+            string s = EditorBuildSettings.scenes[i].path.Substring(firstIndex, secondIndex - firstIndex);
+
             Debug.Log(EditorBuildSettings.scenes[i].path);
-            sb.Append(EditorBuildSettings.scenes[i].ToString());
+            sb.Append('\t');
+            sb.Append(s);
             sb.AppendLine(",");
         }
 
@@ -64,9 +69,6 @@ public class BuildSettingToEnum
         if (File.Exists(filePath))
         {
             string value = "";
-            // StreamReader reader = new StreamReader(filePath);
-            // value = reader.ReadToEnd();
-            // reader.Close();
             value = File.ReadAllText(filePath);
             return value;
         }

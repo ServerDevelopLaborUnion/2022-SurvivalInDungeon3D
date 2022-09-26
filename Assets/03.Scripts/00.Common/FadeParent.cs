@@ -1,7 +1,3 @@
-using static Define;
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -28,9 +24,9 @@ public class FadeParent : MonoBehaviour
     /// </summary>
     /// <param name="duration"> 몇 초에 걸쳐 alpha를 적용할 것 인지 </param>
     /// <param name="alpha"> 최종적으로 alpha가 몇이 될 것 인지 </param>
-    public void Fade(float duration, float alpha)
+    public Tweener Fade(float duration, float alpha)
     {
-        _fadeObj.DOFade(alpha, duration);
+        return _fadeObj.DOFade(alpha, duration);
     }
 
     /// <summary>
