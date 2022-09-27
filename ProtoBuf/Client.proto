@@ -4,102 +4,14 @@ import "Type.proto";
 
 package Protobuf.Client;
 
-// id: 0
 message Connection {
     string SessionId = 1;
 }
 
-// id: 1
 message LoginResponse {
     bool Success = 1;
     optional string Message = 2;
     optional string UserUUID = 3;
     optional string Username = 4;
     optional string Token = 5;
-}
-
-// id: 2
-message EntityCreate {
-    Entity Entity = 1;
-}
-
-// id: 3
-message EntityMove {
-    string EntityUUID = 1;
-    Vector2 Position = 2;
-    Vector2 TargetPosition = 3;
-    Quaternion Rotation = 4;
-}
-
-// id: 4
-message EntityRemove {
-    string EntityUUID = 1;
-}
-
-// id: 5
-message EntityUpdate {
-    string EntityUUID = 1;
-    string EntityData = 2;
-}
-
-// id: 6
-message EntityEvent {
-    string EntityUUID = 1;
-    string EventName = 2;
-    string EventData = 3;
-}
-
-// id: 7
-message RoomCreateResponse {
-    bool Success = 1;
-    optional string RoomUUID = 2;
-    optional string RoomName = 3;
-}
-
-// id: 8
-message RoomJoinResponse {
-    bool Success = 1;
-    optional Room Room = 2;
-}
-
-// id: 9
-message RoomLeaveResponse {
-    bool Success = 1;
-}
-
-// id: 10
-message RoomListResponse {
-    repeated RoomInfo Info = 1;
-}
-
-// id: 11
-message ChatMessage {
-    string UUID = 1;
-    string Message = 2;
-}
-
-// id: 12
-message StartGame {
-
-}
-
-// id: 13
-message SetRole {
-    string UUID = 1;
-    int32 Role = 2;
-    bool IsReady = 3;
-}
-
-// id: 14
-message RoomEvent {
-    string RoomUUID = 1;
-    string EventName = 2;
-    string EventData = 3;
-}
-
-// id: 15
-message UserEvent {
-    string UserUUID = 1;
-    string EventName = 2;
-    string EventData = 3;
 }

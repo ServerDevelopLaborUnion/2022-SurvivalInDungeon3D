@@ -1,26 +1,18 @@
 syntax = "proto3";
 
 package Protobuf;
+
 message Vector3 {
     float x = 1;
     float y = 2;
     float z = 3;
 }
-message V3 {
-    float x = 1;
-    float y = 2;
-    float z = 3;
-}
-message Vector2 {
-    float x = 1;
-    float y = 2;
-}
 
 message UnitInfo {
     string Name = 1;
     int32 Id = 2;
-    Vt3 Position = 3;
-    Vt3 EulerRotation = 4;
+    Vector3 Position = 3;
+    Vector3 EulerRotation = 4;
     float Speed = 5;
     Vector3 InputDir = 6;
     Vector3 MouseDir = 7;
@@ -32,4 +24,3 @@ message Quaternion {
     float z = 3;
     float w = 4;
 }
-

@@ -57,6 +57,7 @@ objectSelectors = {
 }
 recentSearches = [
 	"ext:prefab"
+	"l"
 	"ext:mat "
 	"i"
 ]
