@@ -70,6 +70,31 @@ public class PlayerMove : MonoBehaviour
         m_MouseDir = info.InputDir;
         m_IsRotate = false;
     }
+        private void OnDrawGizmos()
+    {
+        try
+        {
+            Gizmos.color = Color.red;
+            Vector3 pos2 = transform.position + m_CharacterController.center;
+            float value = m_CharacterController.height * 0.5f - m_CharacterController.radius;
+
+            pos2.y -= value + m_CharacterController.skinWidth + 0.001f;
+            Gizmos.DrawSphere(pos2, m_CharacterController.radius);
+        }
+        catch { }
+    }
+    Vector3 pos2;
+
+    private void OnGUI() {
+        GUIStyle label = new GUIStyle();
+        label.normal.textColor = Color.red;
+        label.fontSize = 40;
+
+        GUILayout.Label($"IsGround : {IsGround()}", label);
+        GUILayout.Label($"IsGround : {pos2}", label);
+
+    }
+
     public bool IsGround()
     {
         Vector3 pos2 = transform.position + m_CharacterController.center;

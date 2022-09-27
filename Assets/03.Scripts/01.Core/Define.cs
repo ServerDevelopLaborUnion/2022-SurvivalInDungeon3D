@@ -2,13 +2,6 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public enum FADECHILDS
-{
-    FADEOBJECT,
-    TOPBAR,
-    BOTTOMBAR,
-}
-
 public static class Define
 {
 

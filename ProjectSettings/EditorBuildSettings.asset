@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01. Scenes/PlayerWork.unity
     guid: c98e01bacfc538343805245544d339c7
+  - enabled: 1
+    path: Assets/01. Scenes/Wasabe/WasabePortal.unity
+    guid: fc05ae9a75e013644b4b05c4af5c0e5e
   m_configObjects: {}
