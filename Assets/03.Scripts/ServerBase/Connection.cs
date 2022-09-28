@@ -97,6 +97,6 @@ public class Connection : MonoBehaviour
 
     public static void Broadcast(Packet packet)
     {
-        var proto = Protobuf.Server.
+        // var proto = Protobuf.Server.
     }
 }
