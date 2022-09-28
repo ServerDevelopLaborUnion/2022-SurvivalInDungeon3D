@@ -25,20 +25,21 @@ namespace Protobuf.Server {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgxTZXJ2ZXIucHJvdG8SD1Byb3RvYnVmLlNlcnZlchoKVHlwZS5wcm90byIj",
-            "CgtBdXRoUmVxdWVzdBIUCgxTZXNzaW9uVG9rZW4YASABKAliBnByb3RvMw=="));
+            "CgtBdXRoUmVxdWVzdBIUCgxTZXNzaW9uVG9rZW4YASABKAkiYQoLTW92ZVJl",
+            "cXVlc3QSKAoNTW92ZURpcmVjdGlvbhgBIAEoCzIRLlByb3RvYnVmLlZlY3Rv",
+            "cjMSKAoNTG9va0RpcmVjdGlvbhgCIAEoCzIRLlByb3RvYnVmLlZlY3RvcjNi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protobuf.TypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protobuf.Server.AuthRequest), global::Protobuf.Server.AuthRequest.Parser, new[]{ "SessionToken" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protobuf.Server.AuthRequest), global::Protobuf.Server.AuthRequest.Parser, new[]{ "SessionToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protobuf.Server.MoveRequest), global::Protobuf.Server.MoveRequest.Parser, new[]{ "MoveDirection", "LookDirection" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  /// <summary>
-  /// id: 0
-  /// </summary>
   public sealed partial class AuthRequest : pb::IMessage<AuthRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -219,6 +220,250 @@ namespace Protobuf.Server {
             break;
           case 10: {
             SessionToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class MoveRequest : pb::IMessage<MoveRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MoveRequest> _parser = new pb::MessageParser<MoveRequest>(() => new MoveRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MoveRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Protobuf.Server.ServerReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveRequest(MoveRequest other) : this() {
+      moveDirection_ = other.moveDirection_ != null ? other.moveDirection_.Clone() : null;
+      lookDirection_ = other.lookDirection_ != null ? other.lookDirection_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveRequest Clone() {
+      return new MoveRequest(this);
+    }
+
+    /// <summary>Field number for the "MoveDirection" field.</summary>
+    public const int MoveDirectionFieldNumber = 1;
+    private global::Protobuf.Vector3 moveDirection_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Protobuf.Vector3 MoveDirection {
+      get { return moveDirection_; }
+      set {
+        moveDirection_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LookDirection" field.</summary>
+    public const int LookDirectionFieldNumber = 2;
+    private global::Protobuf.Vector3 lookDirection_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Protobuf.Vector3 LookDirection {
+      get { return lookDirection_; }
+      set {
+        lookDirection_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MoveRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MoveRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(MoveDirection, other.MoveDirection)) return false;
+      if (!object.Equals(LookDirection, other.LookDirection)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (moveDirection_ != null) hash ^= MoveDirection.GetHashCode();
+      if (lookDirection_ != null) hash ^= LookDirection.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (moveDirection_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(MoveDirection);
+      }
+      if (lookDirection_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(LookDirection);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (moveDirection_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(MoveDirection);
+      }
+      if (lookDirection_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(LookDirection);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (moveDirection_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MoveDirection);
+      }
+      if (lookDirection_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LookDirection);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MoveRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.moveDirection_ != null) {
+        if (moveDirection_ == null) {
+          MoveDirection = new global::Protobuf.Vector3();
+        }
+        MoveDirection.MergeFrom(other.MoveDirection);
+      }
+      if (other.lookDirection_ != null) {
+        if (lookDirection_ == null) {
+          LookDirection = new global::Protobuf.Vector3();
+        }
+        LookDirection.MergeFrom(other.LookDirection);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (moveDirection_ == null) {
+              MoveDirection = new global::Protobuf.Vector3();
+            }
+            input.ReadMessage(MoveDirection);
+            break;
+          }
+          case 18: {
+            if (lookDirection_ == null) {
+              LookDirection = new global::Protobuf.Vector3();
+            }
+            input.ReadMessage(LookDirection);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (moveDirection_ == null) {
+              MoveDirection = new global::Protobuf.Vector3();
+            }
+            input.ReadMessage(MoveDirection);
+            break;
+          }
+          case 18: {
+            if (lookDirection_ == null) {
+              LookDirection = new global::Protobuf.Vector3();
+            }
+            input.ReadMessage(LookDirection);
             break;
           }
         }

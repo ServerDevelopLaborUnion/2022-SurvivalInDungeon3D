@@ -7,3 +7,8 @@ package Protobuf.Server;
 message AuthRequest {
     string SessionToken = 1;
 }
+
+message MoveRequest {
+    Vector3 MoveDirection = 1;
+    Vector3 LookDirection = 2;
+}

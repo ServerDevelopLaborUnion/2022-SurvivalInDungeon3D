@@ -15,3 +15,9 @@ message LoginResponse {
     optional string Username = 4;
     optional string Token = 5;
 }
+
+message MoveResponse {
+    int32 Id = 1;
+    Vector3 MoveDirection = 2;
+    Vector3 LookDirection = 3;
+}
