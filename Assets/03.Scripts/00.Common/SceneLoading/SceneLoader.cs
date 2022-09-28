@@ -15,7 +15,6 @@ public class SceneLoader : MonoBehaviour
         SceneManager.sceneLoaded += (x, y) =>
         {
             _fadeCanvas.worldCamera = MainCam;
-            Debug.Log("a");
             Define.FadeParent.Fade(1f, 0f);
         };
     }

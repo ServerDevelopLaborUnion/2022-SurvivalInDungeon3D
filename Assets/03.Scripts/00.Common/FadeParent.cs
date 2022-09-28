@@ -44,4 +44,9 @@ public class FadeParent : MonoBehaviour
         _fadeObj.color = color;
     }
 
+    public Color GetColor()
+    {
+        return _fadeObj.color;
+    }
+
 }
