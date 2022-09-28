@@ -31,9 +31,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (!IsGround())
         {
-            Debug.Log(1);
             m_dir += Vector3.down;
-            Translate();
+            if (m_IsMove)
+                Translate();
         }
         if (m_IsMove)
         {
@@ -75,32 +75,22 @@ public class PlayerMove : MonoBehaviour
         try
         {
             Gizmos.color = Color.red;
-            Vector3 pos2 = transform.position + m_CharacterController.center;
+            Vector3 pos2 = transform.position - m_CharacterController.center;
             float value = m_CharacterController.height * 0.5f - m_CharacterController.radius;
 
-            pos2.y -= value + m_CharacterController.skinWidth + 0.001f;
+            pos2.y -= value + m_CharacterController.skinWidth + 0.05f;
             Gizmos.DrawSphere(pos2, m_CharacterController.radius);
         }
         catch { }
     }
     Vector3 pos2;
 
-    private void OnGUI() {
-        GUIStyle label = new GUIStyle();
-        label.normal.textColor = Color.red;
-        label.fontSize = 40;
-
-        GUILayout.Label($"IsGround : {IsGround()}", label);
-        GUILayout.Label($"IsGround : {pos2}", label);
-
-    }
-
     public bool IsGround()
     {
-        Vector3 pos2 = transform.position + m_CharacterController.center;
+        Vector3 pos2 = transform.position - m_CharacterController.center;
         float value = m_CharacterController.height * 0.5f - m_CharacterController.radius;
 
-        pos2.y -= value + m_CharacterController.skinWidth + 0.001f;
+        pos2.y -= value + m_CharacterController.skinWidth + 0.05f;
 
         return Physics.CheckSphere(pos2, m_CharacterController.radius, LayerMask.GetMask("GROUND"));
     }
