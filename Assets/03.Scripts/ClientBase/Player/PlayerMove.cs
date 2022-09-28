@@ -1,3 +1,5 @@
+using static Yields;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +9,11 @@ public class PlayerMove : MonoBehaviour
     private UnitInfo pInfo;
     [SerializeField]
     private bool m_IsMove = false;
+    [SerializeField]
+    private float m_dustDelay = 0.5f;
+    [SerializeField]
+    private GameObject m_dust = null;
+
     private bool m_IsRotate = false;
     private Vector3 m_dir = Vector3.zero;
     private Vector3 m_MouseDir = Vector3.zero;
@@ -17,6 +24,8 @@ public class PlayerMove : MonoBehaviour
         m_CharacterController = GetComponent<CharacterController>();
         
         pInfo = GetComponent<PlayerBase>().PLAYER_INFO;
+
+        StartCoroutine(Dust());
     }
     public void Translate()
     {
@@ -97,6 +106,21 @@ public class PlayerMove : MonoBehaviour
         pos2.y -= value + m_CharacterController.skinWidth + 0.05f;
 
         return Physics.CheckSphere(pos2, m_CharacterController.radius, LayerMask.GetMask("GROUND"));
+    }
+
+    // TODO : 1. 풀링 안함
+    //        2. 애니메이션에서 발에 닿을 때만 터지는 것으로 변경해야함 -> 이럴 경우 풀링이 필요 없을 수도 있음
+    private IEnumerator Dust()
+    {
+        while(true)
+        {
+            yield return WaitUntil(() => m_IsMove);
+            m_dust.SetActive(true);
+            yield return WaitForSeconds(m_dustDelay);
+            m_dust.SetActive(false);
+            yield return WaitForSeconds(m_dustDelay);
+
+        }
     }
 
 }
