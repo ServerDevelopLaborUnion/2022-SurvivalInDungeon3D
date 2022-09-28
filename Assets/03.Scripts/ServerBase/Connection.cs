@@ -8,7 +8,9 @@ using System.Text;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Object = System.Object;
+using Main;
 
 public class Connection : MonoBehaviour
 {
@@ -35,10 +37,13 @@ public class Connection : MonoBehaviour
     {
         ConnectSocket("localhost", 3000);
 
+        Thread t = new Thread(Recv);
+        t.Start();
+
     }
     private void Update()
     {
-        Recv();
+
     }
     static byte[] MakeArray(Object obj)
     {
@@ -51,16 +56,14 @@ public class Connection : MonoBehaviour
     }
     public static void Recv()
     {
-        byte[] data = new byte[1000];
-        stream.Read(data, 0, data.Length);
-        if (data.Length <= 0)
-            return;
-        data = data.Skip(8).ToArray();
-        string a = "";
-        foreach (byte b in data)
-            a += b.ToString();
-        Debug.Log(a);
-        UnitInfo info = ByteArrayToObject(data) as UnitInfo;
+        while (true)
+        {
+            byte[] data = new byte[1024];
+            stream.Read(data, 0, data.Length);
+            if (data.Length <= 0)
+                return;
+            Packet packet = Packet.StartReceive(data, data.Length);
+        }
     }
     private void OnApplicationQuit()
     {
@@ -90,5 +93,10 @@ public class Connection : MonoBehaviour
             return obj;
         }
 
+    }
+
+    public static void Broadcast(Packet packet)
+    {
+        var proto = Protobuf.Server.
     }
 }
