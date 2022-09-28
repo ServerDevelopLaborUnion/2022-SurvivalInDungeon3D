@@ -10,17 +10,24 @@ public class PlayerMove : MonoBehaviour
     private bool m_IsRotate = false;
     private Vector3 m_dir = Vector3.zero;
     private Vector3 m_MouseDir = Vector3.zero;
+    private float m_gravity = 4f;
     private CharacterController m_CharacterController;
     private void Awake()
     {
         m_CharacterController = GetComponent<CharacterController>();
+        
+        pInfo = GetComponent<PlayerBase>().PLAYER_INFO;
     }
     public void Translate()
     {
         m_CharacterController.Move(m_dir.normalized * Time.deltaTime * pInfo.Speed);
         pInfo.Move(transform.position);
     }
-
+    public void GetGravity()
+    {
+        m_CharacterController?.Move(Vector3.up * Physics.gravity.y * Time.deltaTime);
+        pInfo.Move(transform.position);
+    }
     public void Rotate()
     {
         transform.eulerAngles = pInfo.EulerRotation.ToVector3();
@@ -31,9 +38,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (!IsGround())
         {
-            m_dir += Vector3.down;
-            if (m_IsMove)
-                Translate();
+            GetGravity();
         }
         if (m_IsMove)
         {
@@ -47,7 +52,6 @@ public class PlayerMove : MonoBehaviour
 
     public void StartMove(UnitInfo info)
     {
-        pInfo = info;
         m_dir = info.InputDir;
         m_IsMove = true;
     }
