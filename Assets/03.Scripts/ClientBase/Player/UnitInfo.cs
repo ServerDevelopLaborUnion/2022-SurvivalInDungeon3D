@@ -41,7 +41,7 @@ public class UnitInfo
     [SerializeField]
     private string name;
     [SerializeField]
-    private int id;
+    private string id;
     [SerializeField]
     private Vt3 position;
     [SerializeField]
@@ -54,14 +54,14 @@ public class UnitInfo
     private Vt3 mouseDir = Vt3.zero;
 
     public string Name { get { return name; } }
-    public int Id { get { return id; } }
+    public string Id { get { return id; } }
     public Vt3 Position { get { return position; } }
     public Vt3 EulerRotation { get { return eulerRotation; } }
     public float Speed { get { return speed; } }
     public Vector3 InputDir { get { return inputDir.ToVector3(); } }
     public Vector3 MouseDir { get { return mouseDir.ToVector3(); } }
 
-    public UnitInfo(string name, int id, Vector3 pos, Vector3 rot, float speed)
+    public UnitInfo(string name, string id, Vector3 pos, Vector3 rot, float speed)
     {
         this.name = name;
         this.id = id;
